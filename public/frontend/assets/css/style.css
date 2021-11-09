@@ -2747,6 +2747,10 @@ hr {
     margin: 0 27px
 }
 
+.main-header .main-menu ul .active {
+    text-decoration: underline !important;
+}
+
 @media only screen and (min-width: 1200px) and (max-width: 1600px) {
     .main-header .main-menu ul li {
         margin: 0 14px

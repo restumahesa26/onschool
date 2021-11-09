@@ -18,12 +18,12 @@
                                 <div class="main-menu d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li class="active" ><a href="{{ route('home') }}">Home</a></li>
-                                            <li><a href="{{ route('kursus.index') }}">Kursus</a></li>
-                                            <li><a href="{{ route('grup-belajar.index') }}">Grup Belajar</a></li>
-                                            <li><a href="{{ route('lokakarya.index') }}">Lokakarya</a></li>
-                                            <li><a href="{{ route('jadwal.index') }}">Jadwal</a></li>
-                                            <li><a href="{{ route('about') }}">Tentang</a></li>
+                                            <li @if (Route::is('home')) class="active" @endif><a href="{{ route('home') }}">Home</a></li>
+                                            <li @if (Route::is('kursus.*')) class="active" @endif><a href="{{ route('kursus.index') }}">Kursus</a></li>
+                                            <li @if (Route::is('grup-belajar.*') || Route::is('grup-belajar-pengumuman.*')) class="active" @endif><a href="{{ route('grup-belajar.index') }}">Grup Belajar</a></li>
+                                            <li @if (Route::is('lokakarya.*')) class="active" @endif><a href="{{ route('lokakarya.index') }}">Lokakarya</a></li>
+                                            <li @if (Route::is('jadwal.*')) class="active" @endif><a href="{{ route('jadwal.index') }}">Jadwal</a></li>
+                                            <li @if (Route::is('about')) class="active" @endif><a href="{{ route('about') }}">Tentang</a></li>
                                             @if (Auth::user() && Auth::user()->role == 'ADMIN')
                                                 <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
                                             @endif

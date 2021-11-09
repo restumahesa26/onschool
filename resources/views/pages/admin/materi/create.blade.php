@@ -96,6 +96,10 @@
     <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
 
     <script>
-        CKEDITOR.replace('isi_materi');
+        CKEDITOR.replace('isi_materi', {
+            height: 500,
+            filebrowserUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token() ]) }}",
+            filebrowserUploadMethod: 'form'
+        });
     </script>
 @endpush

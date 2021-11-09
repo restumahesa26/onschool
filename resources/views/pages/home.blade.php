@@ -1,5 +1,9 @@
 @extends('layouts.home')
 
+@section('title')
+    <title>Onschool | Home</title>
+@endsection
+
 @section('content')
     <!--? slider Area Start-->
     <section class="slider-area ">

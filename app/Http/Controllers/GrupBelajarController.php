@@ -94,17 +94,24 @@ class GrupBelajarController extends Controller
     public function gabung_kelas(Request $request)
     {
         $check = GrupBelajar::where('kode_kelas', $request->kode_kelas)->first();
-        $check2 = GrupBelajarSiswa::where('user_id', Auth::user()->id)->where('grup_belajar_id', $check->id)->first();
 
-        if ($check != NULL && $check2 == NULL) {
-            GrupBelajarSiswa::create([
-                'user_id' => Auth::user()->id,
-                'grup_belajar_id' => $check->id
-            ]);
+        if ($check != NULL) {
+            $check2 = GrupBelajarSiswa::where('user_id', Auth::user()->id)->where('grup_belajar_id', $check->id)->first();
+        }
 
+
+        if ($check != NULL) {
+            if ($check2 == NULL) {
+                GrupBelajarSiswa::create([
+                    'user_id' => Auth::user()->id,
+                    'grup_belajar_id' => $check->id
+                ]);
+            } else {
+                return redirect()->route('grup-belajar.index')->with('error', 'Anda Sudah Bergabung');
+            }
             return redirect()->route('grup-belajar.index');
         } else {
-            return redirect()->route('home');
+            return redirect()->route('grup-belajar.index')->with('not-found-class', 'Kelas Tidak Ditemukan');
         }
 
     }

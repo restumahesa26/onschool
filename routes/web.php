@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CKEditorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FounderController;
 use App\Http\Controllers\GrupBelajarController;
@@ -30,6 +31,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
 Route::get('/tentang', [HomeController::class, 'about'])->name('about');
+
+Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
 
 Route::prefix('/kursus')
     ->group(function() {

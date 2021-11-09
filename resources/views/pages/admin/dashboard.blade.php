@@ -12,10 +12,10 @@
             </div>
             <div class="card-wrap">
                 <div class="card-header">
-                    <h4>Total Admin</h4>
+                    <h4>Total Siswa</h4>
                 </div>
                 <div class="card-body">
-                    10
+                    {{ $siswa }}
                 </div>
             </div>
         </div>
@@ -27,10 +27,10 @@
             </div>
             <div class="card-wrap">
                 <div class="card-header">
-                    <h4>News</h4>
+                    <h4>Total Guru</h4>
                 </div>
                 <div class="card-body">
-                    42
+                    {{ $guru }}
                 </div>
             </div>
         </div>
@@ -42,10 +42,10 @@
             </div>
             <div class="card-wrap">
                 <div class="card-header">
-                    <h4>Reports</h4>
+                    <h4>Materi</h4>
                 </div>
                 <div class="card-body">
-                    1,201
+                    {{ $materi }}
                 </div>
             </div>
         </div>

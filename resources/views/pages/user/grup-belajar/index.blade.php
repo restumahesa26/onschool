@@ -1,5 +1,9 @@
 @extends('layouts.home')
 
+@section('title')
+    <title>Onschool | Grup Belajar</title>
+@endsection
+
 @section('content')
 <section class="slider-area slider-area2">
     <div class="slider-active">
@@ -14,7 +18,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                                    <li class="breadcrumb-item"><a href="{{ route('grup-belajar.index') }}">Grup</a></li>
+                                    <li class="breadcrumb-item"><a href="{{ route('grup-belajar.index') }}">Grup Belajar</a></li>
                                 </ol>
                             </nav>
                             <!-- breadcrumb End -->
@@ -36,7 +40,7 @@
         </div>
         <div class="row">
             @forelse ($items as $item)
-            <div class="col-lg-6">
+            <div class="col-lg-4">
                 <div class="properties properties2 mb-30">
                     <div class="properties__card">
                         <div class="properties__caption">
@@ -45,8 +49,6 @@
                             <p>Kode Kelas : {{ $item->kode_kelas }}</p>
                             @endif
                             <h3><a href="#">{{ $item->nama_grup }}</a></h3>
-                            <p>The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people.
-                            </p>
                             <a href="{{ route('grup-belajar.show', $item->id) }}" class="border-btn border-btn2">Find out more</a>
                         </div>
                     </div>
@@ -80,3 +82,27 @@
     </div>
 </div>
 @endsection
+
+@push('addon-script')
+    <script src="{{ url('js/sweetalert2.all.min.js') }}"></script>
+
+    @if (Session::get('not-found-class'))
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Gagal',
+            text: 'Kelas Tidak Ditemukan'
+        })
+    </script>
+    @endif
+
+    @if (Session::get('error'))
+    <script>
+        Swal.fire({
+            icon: 'info',
+            title: 'Gagal',
+            text: 'Anda Sudah Bergabung Ke Kelas Sebelumnya'
+        })
+    </script>
+    @endif
+@endpush

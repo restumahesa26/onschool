@@ -14,7 +14,7 @@
             <li class="menu-header">Manajemen</li>
             <li class="dropdown @if (Route::is('data-siswa.*') || Route::is('data-guru.*') || Route::is('data-admin.*')) active @endif">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
-                        class="fas fa-columns"></i> <span>Data User</span></a>
+                        class="fas fa-user"></i> <span>Data User</span></a>
                 <ul class="dropdown-menu">
                     <li class="@if (Route::is('data-siswa.*')) active @endif"><a class="nav-link" href="{{ route('data-siswa.index') }}">Data Siswa</a></li>
                     <li class="@if (Route::is('data-guru.*')) active @endif"><a class="nav-link" href="{{ route('data-guru.index') }}">Data Guru</a></li>
@@ -30,10 +30,10 @@
                 </ul>
             </li>
             <li class="dropdown @if (Route::is('materi.*')) active @endif">
-                <a href="{{ route('materi.index') }}" class="nav-link"><i class="fas fa-fire"></i><span>Materi</span></a>
+                <a href="{{ route('materi.index') }}" class="nav-link"><i class="fas fa-atlas"></i><span>Materi</span></a>
             </li>
             <li class="dropdown @if (Route::is('founder.*')) active @endif">
-                <a href="{{ route('founder.index') }}" class="nav-link"><i class="fas fa-fire"></i><span>Founder</span></a>
+                <a href="{{ route('founder.index') }}" class="nav-link"><i class="fas fa-users"></i><span>Founder</span></a>
             </li>
         </ul>
     </aside>

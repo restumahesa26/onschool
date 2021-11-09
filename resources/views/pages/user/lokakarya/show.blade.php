@@ -1,5 +1,9 @@
 @extends('layouts.home')
 
+@section('title')
+    <title>Onschool | Lokakarya</title>
+@endsection
+
 @section('content')
 <section class="slider-area slider-area2">
     <div class="slider-active">
@@ -83,6 +87,9 @@
     <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
 
     <script>
-        CKEDITOR.replace('jawaban');
+        CKEDITOR.replace('jawaban', {
+            filebrowserUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token() ]) }}",
+            filebrowserUploadMethod: 'form'
+        });
     </script>
 @endpush

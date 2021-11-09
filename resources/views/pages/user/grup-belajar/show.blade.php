@@ -1,5 +1,9 @@
 @extends('layouts.home')
 
+@section('title')
+    <title>Onschool | Grup Belajar</title>
+@endsection
+
 @section('content')
 <section class="slider-area slider-area2">
     <div class="slider-active">
@@ -206,7 +210,13 @@
     <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
 
     <script>
-        CKEDITOR.replace('isi_pengumuman');
-        CKEDITOR.replace('isi_pengumuman_2');
+        CKEDITOR.replace('isi_pengumuman', {
+            filebrowserUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token() ]) }}",
+            filebrowserUploadMethod: 'form'
+        });
+        CKEDITOR.replace('isi_pengumuman_2', {
+            filebrowserUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token() ]) }}",
+            filebrowserUploadMethod: 'form'
+        });
     </script>
 @endpush
