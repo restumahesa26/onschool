@@ -91,8 +91,19 @@
                 </span>
                 @enderror
             </div>
+            <div class="form-group">
+                <label for="pdf">File Materi</label>
+                <input type="file" name="pdf" id="pdf" class="form-control mt-1 @error('pdf') is-invalid @enderror" placeholder="Masukkan File Materi" value="{{ old('pdf') }}">
+                @error('pdf')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
             <button type="submit" class="btn btn-primary btn-block">Simpan Data</button>
         </form>
+        <embed src="{{ asset('storage/file/materi/'. $item->file) }}" width="100%" height="550px" class="mt-4">
+        </embed>
     </div>
 </div>
 @endsection

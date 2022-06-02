@@ -10,7 +10,7 @@ class Materi extends Model
     use HasFactory;
 
     protected $fillable = [
-        'kategori_id', 'sub_kategori_id', 'judul', 'kelas', 'thumbnail', 'deskripsi', 'isi_materi'
+        'kategori_id', 'sub_kategori_id', 'judul', 'kelas', 'thumbnail', 'deskripsi', 'isi_materi', 'file'
     ];
 
     public function kategori() {

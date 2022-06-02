@@ -79,8 +79,17 @@
             </div>
             <div class="form-group">
                 <label for="thumbnail">Thumbnail</label>
-                <input type="file" name="thumbnail" id="thumbnail" class="form-control @error('thumbnail') is-invalid @enderror" placeholder="Masukkan Thumbnail" value="{{ old('thumbnail') }}">
+                <input type="file" name="thumbnail" id="thumbnail" class="form-control @error('thumbnail') is-invalid @enderror" placeholder="Masukkan Thumbnail" value="{{ old('thumbnail') }}" required>
                 @error('thumbnail')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="pdf">File Materi</label>
+                <input type="file" name="pdf" id="pdf" class="form-control @error('pdf') is-invalid @enderror" placeholder="Masukkan File Materi" value="{{ old('pdf') }}" required>
+                @error('pdf')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>

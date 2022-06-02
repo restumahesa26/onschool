@@ -40,6 +40,10 @@
                 <img src="{{ asset('storage/images/thumbnail/'. $item->thumbnail) }}" alt="" style="float: left; margin-right: 20px">
                 <p>{!! $item->isi_materi !!}</p>
             </div>
+            <div class="col-lg-12">
+                <embed src="{{ asset('storage/file/materi/'. $item->file) }}" width="100%" height="550px" class="mt-4">
+                </embed>
+            </div>
         </div>
     </div>
 </div>

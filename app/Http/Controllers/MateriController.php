@@ -55,7 +55,8 @@ class MateriController extends Controller
             'kelas' => ['required', 'string', 'max:255'],
             'deskripsi' => ['required','string', 'max:255'],
             'isi_materi' => ['required', 'string', 'max:255'],
-            'thumbnail' => ['required', 'image']
+            'thumbnail' => ['required', 'image'],
+            'pdf' => ['required', 'mimes:pdf'],
         ]);
 
         $file = $request->file('thumbnail');
@@ -65,6 +66,11 @@ class MateriController extends Controller
         $thumbnailpath = storage_path('app/public/images/thumbnail/' . $imageNames);
         Image::make($thumbnailpath)->resize(600, 400)->save($thumbnailpath);
 
+        $file2 = $request->file('thumbnail');
+        $extension2 = $file2->extension();
+        $imageNames2 = uniqid('img_', microtime()) . '.' . $extension2;
+        Storage::putFileAs('public/file/materi', $file2, $imageNames2);
+
         Materi::create([
             'judul' => $request->judul,
             'kategori_id' => $request->kategori_id,
@@ -72,7 +78,8 @@ class MateriController extends Controller
             'kelas' => $request->kelas,
             'deskripsi' => $request->deskripsi,
             'isi_materi' => $request->isi_materi,
-            'thumbnail' => $imageNames
+            'thumbnail' => $imageNames,
+            'file' => $imageNames2
         ]);
 
         return redirect()->route('materi.index');
@@ -137,6 +144,15 @@ class MateriController extends Controller
             $imageNames = $item->thumbnail;
         }
 
+        if ($request->pdf) {
+            $file2 = $request->file('pdf');
+            $extension2 = $file2->extension();
+            $imageNames2 = uniqid('materi_', microtime()) . '.' . $extension2;
+            Storage::putFileAs('public/file/materi', $file2, $imageNames2);
+        }else {
+            $imageNames2 = $item->pdf;
+        }
+
         $item->update([
             'judul' => $request->judul,
             'kategori_id' => $request->kategori_id,
@@ -144,7 +160,8 @@ class MateriController extends Controller
             'kelas' => $request->kelas,
             'deskripsi' => $request->deskripsi,
             'isi_materi' => $request->isi_materi,
-            'thumbnail' => $imageNames
+            'thumbnail' => $imageNames,
+            'file' => $imageNames2,
         ]);
 
         return redirect()->route('materi.index');
