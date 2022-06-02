@@ -99,7 +99,6 @@ class GrupBelajarController extends Controller
             $check2 = GrupBelajarSiswa::where('user_id', Auth::user()->id)->where('grup_belajar_id', $check->id)->first();
         }
 
-
         if ($check != NULL) {
             if ($check2 == NULL) {
                 GrupBelajarSiswa::create([

@@ -22,6 +22,6 @@ class GrupBelajarPengumuman extends Model
     }
 
     public function komentar() {
-        return $this->hasMany(GrupBelajarPengumumanKomentar::class, 'pengumuman_id', 'id')->orderBy('created_at', 'DESC');
+        return $this->hasMany(GrupBelajarPengumumanKomentar::class, 'pengumuman_id', 'id');
     }
 }

@@ -43,7 +43,7 @@ Route::prefix('/kursus')
 
 Route::prefix('/lokakarya')
     ->group(function() {
-        Route::get('/', [LokakaryaController::class, 'index'])->name('lokakarya.index');
+        Route::get('/', [LokakaryaController::class, 'index'])->name('lokakarya.index')->middleware(['auth:sanctum', 'verified']);
 
         Route::post('/store', [LokakaryaController::class, 'store'])->name('lokakarya.store')->middleware(['auth:sanctum', 'verified']);
 

@@ -32,7 +32,7 @@
                                                 <form method="POST" action="{{ route('logout') }}">
                                                     @csrf
                                                     <a href="{{ route('logout') }}" class="btn btn-warning" onclick="event.preventDefault(); this.closest('form').submit();">
-                                                        Logout
+                                                        {{ Auth::user()->nama }}
                                                     </a>
                                                 </form>
                                             </li>
