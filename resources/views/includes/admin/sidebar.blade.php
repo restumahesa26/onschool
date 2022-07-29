@@ -35,6 +35,9 @@
             <li class="dropdown @if (Route::is('founder.*')) active @endif">
                 <a href="{{ route('founder.index') }}" class="nav-link"><i class="fas fa-users"></i><span>Founder</span></a>
             </li>
+            <li class="dropdown @if (Route::is('blog.*')) active @endif">
+                <a href="{{ route('blog.index') }}" class="nav-link"><i class="fas fa-users"></i><span>Blog</span></a>
+            </li>
         </ul>
     </aside>
 </div>

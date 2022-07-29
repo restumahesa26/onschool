@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CKEditorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FounderController;
@@ -33,6 +34,10 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/tentang', [HomeController::class, 'about'])->name('about');
 
 Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
+
+Route::get('/Blog', [HomeController::class, 'Blogs'])->name('Blogg');
+
+Route::get('/Blog/{slug}', [HomeController::class, 'Blogss'])->name('Blog-show');
 
 Route::prefix('/kursus')
     ->group(function() {
@@ -120,6 +125,8 @@ Route::prefix('dashboard')
         Route::resource('materi', MateriController::class);
 
         Route::resource('founder', FounderController::class);
+
+        Route::resource('blog', BlogController::class);
     });
 
 require __DIR__.'/auth.php';

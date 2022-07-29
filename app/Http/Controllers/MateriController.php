@@ -66,7 +66,7 @@ class MateriController extends Controller
         $thumbnailpath = storage_path('app/public/images/thumbnail/' . $imageNames);
         Image::make($thumbnailpath)->resize(600, 400)->save($thumbnailpath);
 
-        $file2 = $request->file('thumbnail');
+        $file2 = $request->file('pdf');
         $extension2 = $file2->extension();
         $imageNames2 = uniqid('img_', microtime()) . '.' . $extension2;
         Storage::putFileAs('public/file/materi', $file2, $imageNames2);

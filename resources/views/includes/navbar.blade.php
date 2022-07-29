@@ -24,6 +24,7 @@
                                             <li @if (Route::is('lokakarya.*')) class="active" @endif><a href="{{ route('lokakarya.index') }}">Lokakarya</a></li>
                                             <li @if (Route::is('jadwal.*')) class="active" @endif><a href="{{ route('jadwal.index') }}">Jadwal</a></li>
                                             <li @if (Route::is('about')) class="active" @endif><a href="{{ route('about') }}">Tentang</a></li>
+                                            <li @if (Route::is('Blogg') || Route::is('Blog-show')) class="active" @endif><a href="{{ route('Blogg') }}">Blog</a></li>
                                             @if (Auth::user() && Auth::user()->role == 'ADMIN')
                                                 <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
                                             @endif
