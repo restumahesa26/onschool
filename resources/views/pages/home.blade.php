@@ -69,6 +69,29 @@
             </div>
         </div>
     </div>
+
+    <section class="about-area1 fix pt-10">
+        <div class="support-wrapper align-items-center">
+            <div class="left-content1">
+                <!-- section tittle -->
+                <div class="section-tittle section-tittle2 mb-55">
+                    <div class="front-text">
+                        <h2 class="">Onschool Training</h2>
+                        {{-- <p>Saat ini mayoritas tenaga pendidik cenderung hanya memanfaatkan platform yang tersedia untuk melakukan proses pembelajaran seperti apps classroom, zoom meeting, dan sebagainya. Serta mengirimkan tulisan, dokumen berkas dan video melalui platform yang digunakan. Namun, penggunaan video dan membaca dokumen cenderung seperti pembelajaran langsung secara ceramah sehingga peserta didik kurang aktif dalam pembelajaran. Dari permasalahan tersebut, maka kami menciptakan inovasi integrasi sistem Student Centered Learning dengan pengembangan rancangan pembelajaran secara daring dan berorientasi ke masa depan yaitu ONSCHOOL atau Online School sebagai simulasi sekolah tatap muka berbentuk daring. Pembelajaran ini didesain agar dapat meningkatkan keaktifan peserta didik sehingga peserta didik memiliki kreatifitas berpikir dan meningkatkan pemahaman konsep dalam pembelajaran.
+                        </p> --}}
+                        <a href="{{ route('onschool-training.index') }}" class="btn btn-primary">Daftar Program</a>
+                    </div>
+                </div>
+            </div>
+            <div class="right-content1">
+                <!-- img -->
+                <div class="right-img">
+                    <img src="{{ url('onschool-training.jpeg') }}" alt="" style="width: 100%">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Courses area start -->
     <div class="courses-area section-padding40 fix">
         <div class="container">

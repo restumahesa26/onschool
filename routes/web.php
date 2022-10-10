@@ -14,6 +14,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KursusController;
 use App\Http\Controllers\LokakaryaController;
 use App\Http\Controllers\MateriController;
+use App\Http\Controllers\OnschoolTrainingController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\SubKategoriController;
 use Illuminate\Support\Facades\Route;
@@ -35,9 +36,15 @@ Route::get('/tentang', [HomeController::class, 'about'])->name('about');
 
 Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
 
-Route::get('/Blog', [HomeController::class, 'Blogs'])->name('Blogg');
+Route::get('/blog', [HomeController::class, 'Blogs'])->name('Blogg');
 
-Route::get('/Blog/{slug}', [HomeController::class, 'Blogss'])->name('Blog-show');
+Route::get('/blog/{slug}', [HomeController::class, 'Blogss'])->name('Blog-show');
+
+Route::get('/onschool-training-pendaftaran', [OnschoolTrainingController::class, 'index'])->name('onschool-training.index')->middleware(['auth:sanctum', 'verified']);
+
+Route::post('/onschool-training-pendaftaran/store', [OnschoolTrainingController::class, 'store'])->name('onschool-training.store')->middleware(['auth:sanctum', 'verified']);
+
+Route::get('/onschool-training-pendaftaran/next', [OnschoolTrainingController::class, 'next'])->name('onschool-training.next')->middleware(['auth:sanctum', 'verified']);
 
 Route::prefix('/kursus')
     ->group(function() {
@@ -106,7 +113,7 @@ Route::prefix('grup-belajar')
 });
 
 Route::prefix('dashboard')
-->middleware(['auth:sanctum', 'verified', 'admin'])
+    ->middleware(['auth:sanctum', 'verified', 'admin'])
     ->group(function() {
         Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
 
@@ -127,6 +134,12 @@ Route::prefix('dashboard')
         Route::resource('founder', FounderController::class);
 
         Route::resource('blog', BlogController::class);
+
+        Route::get('/onschool-training-pendaftaran', [OnschoolTrainingController::class, 'adminIndex'])->name('onschool-training.admin-index');
+
+        Route::get('/onschool-training-pendaftaran/{id}/verifikasi', [OnschoolTrainingController::class, 'verifikasi'])->name('onschool-training.admin-verifikasi');
+
+        Route::get('/onschool-training-pendaftaran/{id}/batal-verifikasi', [OnschoolTrainingController::class, 'batalVerifikasi'])->name('onschool-training.admin-batal-verifikasi');
     });
 
 require __DIR__.'/auth.php';

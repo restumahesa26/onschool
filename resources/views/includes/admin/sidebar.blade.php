@@ -32,6 +32,9 @@
             <li class="dropdown @if (Route::is('materi.*')) active @endif">
                 <a href="{{ route('materi.index') }}" class="nav-link"><i class="fas fa-atlas"></i><span>Materi</span></a>
             </li>
+            <li class="dropdown @if (Route::is('onschool-training.admin-index')) active @endif">
+                <a href="{{ route('onschool-training.admin-index') }}" class="nav-link"><i class="fas fa-atlas"></i><span>Onschool Training</span></a>
+            </li>
             <li class="dropdown @if (Route::is('founder.*')) active @endif">
                 <a href="{{ route('founder.index') }}" class="nav-link"><i class="fas fa-users"></i><span>Founder</span></a>
             </li>
