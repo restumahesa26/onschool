@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -61,7 +62,7 @@ class UserController extends Controller
                 'asal_sekolah' => ['required', 'string', 'max:255'],
                 'alamat' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'password' => $this->passwordRules()
+                'password' => ['required', 'confirmed', Rules\Password::defaults()],
             ]);
 
             User::create([
